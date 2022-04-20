@@ -224,7 +224,9 @@ static void ocep_type_node_dump_visitor(ocep_type_node_t node, int num, int dept
     }
     
     --depth;  // Root node is skipped.
-    struct __ocep_type_node_dump_state *state = (typeof(state)) userdata;
+    
+    struct __ocep_type_node_dump_state* state;
+    state = (struct __ocep_type_node_dump_state*) userdata;
     
     strbuf *str_buf = &state->str;
     
@@ -247,7 +249,11 @@ static void ocep_type_node_dump_visitor(ocep_type_node_t node, int num, int dept
     strbuf_append_repeat(str_buf, ' ', depth * 4);
     strbuf_append(str_buf, "size:     ");
     char size_str[32];
+#if CONFIG_WIN32
+    sprintf_s(size_str, sizeof(size_str), "%zu", node->size);
+#else
     sprintf(size_str, "%zu", node->size);
+#endif
     strbuf_append(str_buf, size_str);
     strbuf_append(str_buf, "\n");
     

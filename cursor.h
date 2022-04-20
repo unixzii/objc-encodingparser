@@ -27,10 +27,13 @@ static ocep_cursor_t ocep_cursor_new(const char *str) {
     size_t size = sizeof(struct ocep_cursor) + len;
     
     ocep_cursor_t cursor = (ocep_cursor_t) malloc(size);
+    if (!cursor) {
+        return NULL;
+    }
     
     cursor->len = len;
     cursor->idx = 0;
-    strcpy(cursor->str, str);
+    memcpy(cursor->str, str, len);
     
     return cursor;
 }

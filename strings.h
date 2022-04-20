@@ -11,6 +11,8 @@
 #include <stdlib.h>
 #include <stddef.h>
 
+#include "common.h"
+
 typedef struct _strbuf {
     char *str;
     size_t len;
@@ -30,7 +32,11 @@ static strbuf strbuf_alloc(const char *str, size_t extra_bytes) {
     buf.cap = cap;
     
     if (str) {
+#if CONFIG_WIN32
+        strcpy_s(buf.str, buf.cap, str);
+#else
         strcpy(buf.str, str);
+#endif
     }
     
     return buf;
@@ -55,7 +61,11 @@ static void strbuf_append(strbuf *buf, const char *str) {
     size_t str_len = strlen(str);
     
     if (buf->len + str_len <= buf->cap - 1) {
+#if CONFIG_WIN32
+        strcat_s(buf->str, buf->cap, str);
+#else
         strcat(buf->str, str);
+#endif
         buf->len += str_len;
         return;
     }
@@ -64,10 +74,18 @@ static void strbuf_append(strbuf *buf, const char *str) {
     size_t new_cap = buf->cap + str_len + 1;
     char *new_str = calloc(new_cap, 1);
     if (old_str) {
+#if CONFIG_WIN32
+        strcpy_s(new_str, new_cap, old_str);
+#else
         strcpy(new_str, old_str);
+#endif
         free(old_str);
     }
+#if CONFIG_WIN32
+    strcat_s(new_str, new_cap, str);
+#else
     strcat(new_str, str);
+#endif
     
     buf->str = new_str;
     buf->len += str_len;

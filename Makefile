@@ -22,6 +22,11 @@ ifdef CONFIG_DARWIN
 	CFLAGS += -Wchar-subscripts -funsigned-char
 
 	AR=ar
+else ifdef CONFIG_POSIX
+	CC=gcc
+	CFLAGS=-g -Wall
+
+	AR=ar
 endif
 
 PROGS=run-test
