@@ -12,7 +12,7 @@
     #define CONFIG_WIN32 1
 #endif
 
-#if CONFIG_WIN32
+#if defined(CONFIG_WIN32)
     #define ALWAYS_INLINE __inline
     #define NO_INLINE __declspec(noinline)
     #define UNUSED

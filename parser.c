@@ -249,7 +249,7 @@ static void ocep_type_node_dump_visitor(ocep_type_node_t node, int num, int dept
     strbuf_append_repeat(str_buf, ' ', depth * 4);
     strbuf_append(str_buf, "size:     ");
     char size_str[32];
-#if CONFIG_WIN32
+#if defined(CONFIG_WIN32)
     sprintf_s(size_str, sizeof(size_str), "%zu", node->size);
 #else
     sprintf(size_str, "%zu", node->size);
