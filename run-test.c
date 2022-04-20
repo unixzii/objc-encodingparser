@@ -5,6 +5,7 @@
 //  Created by Cyandev on 2022/4/20.
 //
 
+#include <stdio.h>
 #include <stdlib.h>
 
 #include "parser.h"

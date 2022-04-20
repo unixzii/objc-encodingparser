@@ -5,6 +5,7 @@
 //  Created by Cyandev on 2022/4/20.
 //
 
+#include <stdio.h>
 #include <stdlib.h>
 
 #include "parser.h"
@@ -104,7 +105,7 @@ static ocep_type_node_t _parse_one_element(ocep_cursor_t cursor, ocep_type_node_
             node->type = val;              \
             node->size = siz;              \
             break;
-#include "types.inc"
+#include "types.def"
 #undef __OBJC_TYPE
 #undef __NO_COMPLEX_OBJC_TYPES
         case '{':
@@ -239,7 +240,7 @@ static void ocep_type_node_dump_visitor(ocep_type_node_t node, int num, int dept
         case val:                                                       \
             ocep_type_node_dump_outlined_1(str_buf, depth, #name, rep); \
             break;
-#include "types.inc"
+#include "types.def"
 #undef __OBJC_TYPE
     }
     

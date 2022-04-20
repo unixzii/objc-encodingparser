@@ -8,7 +8,7 @@
 #ifndef parser_h
 #define parser_h
 
-#include <stdio.h>
+#include <stddef.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -16,14 +16,14 @@ extern "C" {
 
 enum {
 #define __OBJC_TYPE(name, value, _0, _1, _2) name = value,
-#include "types.inc"
+#include "types.def"
 #undef __OBJC_TYPE
 };
 
 typedef struct ocep_type_node *ocep_type_node_t;
 
 struct ocep_type_node {
-    /* Objective-C Type, see `types.inc` for enum values.
+    /* Objective-C Type, see `types.def` for enum values.
        Return 0 for root nodes. */
     int type;
     /* Struct name. Only exists for struct types. */
