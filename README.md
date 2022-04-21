@@ -7,7 +7,7 @@ See [parser.h](./parser.h) for the provided APIs and [run-test.c](./run-test.c) 
 ## Features
 
 * Simple and intuitive APIs, ready for use without reading any documents.
-* Zero-dependency and platform-agnostic, easy to integrate with your various analysis facilities.
+* Zero-dependency and platform-agnostic, tested in macOS, Linux and Windows, easy to integrate with your various analysis facilities.
 * Full support of the type encoding syntax (including struct, union), and able to get the related information of the type (like name, size and alignment).
 * Error tolerance for ill-formed encoding strings, the library parses inputs in its best effort.
 * Built-in dump function to print the human-readable string describing the type.
