@@ -30,7 +30,7 @@ The project (solution) both contains two targets: `libocep` and `RunTest`. Once 
 
 ## Type Node Explained
 
-`ocep_type_node_t` is the core structure of this library, you parse an encoding string and get result with that type. It's like an n-ary tree and each node has a parent pointer, a child pointer and a sibling pointer. An example is shown as the below figure:
+`ocep_type_node_t` is the core structure of this library, you parse an encoding string and get the result with that type. It's like an n-ary tree and each node has a parent pointer, a child pointer and a sibling pointer. An example is shown as the below figure:
 
 ![Example Node](./misc/node_structure.png)
 
