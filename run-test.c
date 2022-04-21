@@ -36,6 +36,13 @@ static void run_test(const char *test) {
 }
 
 int main(int argc, char **argv) {
+    if (argc > 1) {
+        // Run with the given input.
+        run_test(argv[1]);
+        return 0;
+    }
+    
+    // Run with a suite of tests.
     run_test("@@:");
     run_test("v@:");
     run_test("v@:{CGRect={CGPoint=dd}{CGSize=dd}}");
