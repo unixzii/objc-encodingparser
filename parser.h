@@ -26,14 +26,18 @@ struct ocep_type_node {
     /* Objective-C Type, see `types.def` for enum values.
        Return 0 for root nodes. */
     int type;
-    /* Struct name. Only exists for struct types. */
-    const char *name;
+    
     /* Number of child types (for array, struct and union types).
        Note that there will only be one node in the child list
        for array type. */
-    size_t child_num;
+    int child_num;
     /* Size of the value of this type. */
-    size_t size;
+    int size;
+    /* Alignment of this type. */
+    int alignment;
+    
+    /* Struct name. Only exists for struct types. */
+    const char *name;
     
     /* Parent node that holds this node. */
     ocep_type_node_t parent;

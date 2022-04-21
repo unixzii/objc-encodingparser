@@ -22,4 +22,12 @@
     #define UNUSED __attribute__((unused))
 #endif
 
+#ifndef MAX
+#define MAX(x, y) ((x) > (y) ? (x) : (y))
+#endif
+
+#ifndef ROUNDUP
+#define ROUNDUP(x, y) (((x) + (y) - 1) & -(y))
+#endif
+
 #endif /* common_h */
