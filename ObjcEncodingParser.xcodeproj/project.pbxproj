@@ -7,12 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FA5D07F62810636F00ED9CA4 /* run-test.c in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07F02810636F00ED9CA4 /* run-test.c */; };
-		FA5D07F82810636F00ED9CA4 /* parser.c in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07F52810636F00ED9CA4 /* parser.c */; };
+		FA8450CE2811C642007162A3 /* parser.c in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07F52810636F00ED9CA4 /* parser.c */; };
+		FA8450D02811C647007162A3 /* liblibocep.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8450CA2811C639007162A3 /* liblibocep.a */; };
+		FA8450D32811C64E007162A3 /* run-test.c in Sources */ = {isa = PBXBuildFile; fileRef = FA5D07F02810636F00ED9CA4 /* run-test.c */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		FA8450D12811C64B007162A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FAF1B151280F2A8500ABBA15 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA8450C92811C639007162A3;
+			remoteInfo = libocep;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
-		FAF1B157280F2A8500ABBA15 /* CopyFiles */ = {
+		FA8450BD2811C615007162A3 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -31,11 +42,20 @@
 		FA5D07F32810636F00ED9CA4 /* parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parser.h; sourceTree = "<group>"; };
 		FA5D07F42810636F00ED9CA4 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
 		FA5D07F52810636F00ED9CA4 /* parser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = parser.c; sourceTree = "<group>"; };
-		FAF1B159280F2A8500ABBA15 /* ObjcEncodingParser */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ObjcEncodingParser; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA8450BF2811C615007162A3 /* RunTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RunTest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA8450CA2811C639007162A3 /* liblibocep.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibocep.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		FAF1B156280F2A8500ABBA15 /* Frameworks */ = {
+		FA8450BC2811C615007162A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA8450D02811C647007162A3 /* liblibocep.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA8450C82811C639007162A3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -45,6 +65,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA8450CF2811C647007162A3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FAF1B150280F2A8500ABBA15 = {
 			isa = PBXGroup;
 			children = (
@@ -56,36 +83,66 @@
 				FA5D07EF2810636F00ED9CA4 /* strings.h */,
 				FA5D07F12810636F00ED9CA4 /* types.def */,
 				FAF1B15A280F2A8500ABBA15 /* Products */,
+				FA8450CF2811C647007162A3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		FAF1B15A280F2A8500ABBA15 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FAF1B159280F2A8500ABBA15 /* ObjcEncodingParser */,
+				FA8450BF2811C615007162A3 /* RunTest */,
+				FA8450CA2811C639007162A3 /* liblibocep.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		FA8450C62811C639007162A3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		FAF1B158280F2A8500ABBA15 /* ObjcEncodingParser */ = {
+		FA8450BE2811C615007162A3 /* RunTest */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FAF1B160280F2A8500ABBA15 /* Build configuration list for PBXNativeTarget "ObjcEncodingParser" */;
+			buildConfigurationList = FA8450C52811C615007162A3 /* Build configuration list for PBXNativeTarget "RunTest" */;
 			buildPhases = (
-				FAF1B155280F2A8500ABBA15 /* Sources */,
-				FAF1B156280F2A8500ABBA15 /* Frameworks */,
-				FAF1B157280F2A8500ABBA15 /* CopyFiles */,
+				FA8450BB2811C615007162A3 /* Sources */,
+				FA8450BC2811C615007162A3 /* Frameworks */,
+				FA8450BD2811C615007162A3 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA8450D22811C64B007162A3 /* PBXTargetDependency */,
+			);
+			name = RunTest;
+			productName = RunTest;
+			productReference = FA8450BF2811C615007162A3 /* RunTest */;
+			productType = "com.apple.product-type.tool";
+		};
+		FA8450C92811C639007162A3 /* libocep */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA8450CB2811C639007162A3 /* Build configuration list for PBXNativeTarget "libocep" */;
+			buildPhases = (
+				FA8450C62811C639007162A3 /* Headers */,
+				FA8450C72811C639007162A3 /* Sources */,
+				FA8450C82811C639007162A3 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = ObjcEncodingParser;
-			productName = ObjcEncodingParser;
-			productReference = FAF1B159280F2A8500ABBA15 /* ObjcEncodingParser */;
-			productType = "com.apple.product-type.tool";
+			name = libocep;
+			productName = libocep;
+			productReference = FA8450CA2811C639007162A3 /* liblibocep.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -96,7 +153,10 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
-					FAF1B158280F2A8500ABBA15 = {
+					FA8450BE2811C615007162A3 = {
+						CreatedOnToolsVersion = 13.3;
+					};
+					FA8450C92811C639007162A3 = {
 						CreatedOnToolsVersion = 13.3;
 					};
 				};
@@ -114,24 +174,76 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FAF1B158280F2A8500ABBA15 /* ObjcEncodingParser */,
+				FA8450BE2811C615007162A3 /* RunTest */,
+				FA8450C92811C639007162A3 /* libocep */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		FAF1B155280F2A8500ABBA15 /* Sources */ = {
+		FA8450BB2811C615007162A3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA5D07F82810636F00ED9CA4 /* parser.c in Sources */,
-				FA5D07F62810636F00ED9CA4 /* run-test.c in Sources */,
+				FA8450D32811C64E007162A3 /* run-test.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA8450C72811C639007162A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA8450CE2811C642007162A3 /* parser.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		FA8450D22811C64B007162A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA8450C92811C639007162A3 /* libocep */;
+			targetProxy = FA8450D12811C64B007162A3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		FA8450C32811C615007162A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FA8450C42811C615007162A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		FA8450CC2811C639007162A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		FA8450CD2811C639007162A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		FAF1B15E280F2A8500ABBA15 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -241,41 +353,32 @@
 			};
 			name = Release;
 		};
-		FAF1B161280F2A8500ABBA15 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		FAF1B162280F2A8500ABBA15 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		FA8450C52811C615007162A3 /* Build configuration list for PBXNativeTarget "RunTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA8450C32811C615007162A3 /* Debug */,
+				FA8450C42811C615007162A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA8450CB2811C639007162A3 /* Build configuration list for PBXNativeTarget "libocep" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA8450CC2811C639007162A3 /* Debug */,
+				FA8450CD2811C639007162A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FAF1B154280F2A8500ABBA15 /* Build configuration list for PBXProject "ObjcEncodingParser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FAF1B15E280F2A8500ABBA15 /* Debug */,
 				FAF1B15F280F2A8500ABBA15 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FAF1B160280F2A8500ABBA15 /* Build configuration list for PBXNativeTarget "ObjcEncodingParser" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FAF1B161280F2A8500ABBA15 /* Debug */,
-				FAF1B162280F2A8500ABBA15 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
