@@ -22,8 +22,8 @@
  * SOFTWARE.
  */
 
-#ifndef strings_h
-#define strings_h
+#ifndef STRINGS_H
+#define STRINGS_H
 
 #include <stdlib.h>
 #include <stddef.h>
@@ -116,4 +116,4 @@ static void strbuf_append_repeat(strbuf *buf, char ch, int count) {
     }
 }
 
-#endif /* strings_h */
+#endif /* STRINGS_H */

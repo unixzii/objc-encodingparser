@@ -22,8 +22,8 @@
  * SOFTWARE.
  */
 
-#ifndef cursor_h
-#define cursor_h
+#ifndef CURSOE_H
+#define CURSOE_H
 
 #include <string.h>
 #include <stdlib.h>
@@ -80,4 +80,4 @@ static char ocep_cursor_step(ocep_cursor_t cursor) {
     return tok;
 }
 
-#endif /* cursor_h */
+#endif /* CURSOE_H */

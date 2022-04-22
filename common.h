@@ -22,8 +22,8 @@
  * SOFTWARE.
  */
 
-#ifndef common_h
-#define common_h
+#ifndef COMMON_H
+#define COMMON_H
 
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
     #define CONFIG_WIN32 1
@@ -47,4 +47,4 @@
 #define ROUNDUP(x, y) (((x) + (y) - 1) & -(y))
 #endif
 
-#endif /* common_h */
+#endif /* COMMON_H */

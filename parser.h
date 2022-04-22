@@ -22,8 +22,8 @@
  * SOFTWARE.
  */
 
-#ifndef parser_h
-#define parser_h
+#ifndef PARSER_H
+#define PARSER_H
 
 #include <stddef.h>
 
@@ -86,4 +86,4 @@ char *ocep_type_node_dump(ocep_type_node_t node);
 } /* extern "C" { */
 #endif
 
-#endif /* parser_h */
+#endif /* PARSER_H */
