@@ -53,10 +53,11 @@ else ifdef CONFIG_POSIX
 endif
 
 PROGS=run-test
+LIBS=libocep.a
 
 LIB_OBJS=$(OBJDIR)/parser.o
 
-all: $(PROGS) libocep.a
+all: $(LIBS) $(PROGS)
 
 run-test: $(OBJDIR)/run-test.o libocep.a
 	$(CC) $(CFLAGS) -o $@ $(filter-out libocep.a,$^) -L. -locep
