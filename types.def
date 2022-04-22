@@ -52,4 +52,4 @@ __OBJC_TYPE(OBJC_TYPE_UNION,              21, '(',  0,  0)
 __OBJC_TYPE(OBJC_TYPE_BIT_FIELD,          22, 'b',  0,  0)
 __OBJC_TYPE(OBJC_TYPE_POINTER,            23, '^',  8,  0)
 #endif
-__OBJC_TYPE(OBJC_TYPE_UNKNOWN,            64, '?',  0,  1)
+__OBJC_TYPE(OBJC_TYPE_UNKNOWN,            64, '?',  8,  1)
