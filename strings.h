@@ -44,7 +44,7 @@ static strbuf strbuf_alloc(const char *str, size_t extra_bytes) {
     size_t cap = len + extra_bytes + 1;
     
     strbuf buf;
-    buf.str = calloc(cap, 1);
+    buf.str = (char *) calloc(cap, 1);
     buf.len = len;
     buf.cap = cap;
     
@@ -89,7 +89,7 @@ static void strbuf_append(strbuf *buf, const char *str) {
     
     char *old_str = buf->str;
     size_t new_cap = buf->cap + str_len + 1;
-    char *new_str = calloc(new_cap, 1);
+    char *new_str = (char *) calloc(new_cap, 1);
     if (old_str) {
 #if defined(CONFIG_WIN32)
         strcpy_s(new_str, new_cap, old_str);
