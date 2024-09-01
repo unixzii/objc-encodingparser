@@ -35,6 +35,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		ED7091602C84405B0056D465 /* modifiers.def */ = {isa = PBXFileReference; lastKnownFileType = text; path = modifiers.def; sourceTree = "<group>"; };
 		FA5D07EF2810636F00ED9CA4 /* strings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strings.h; sourceTree = "<group>"; };
 		FA5D07F02810636F00ED9CA4 /* run-test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "run-test.c"; sourceTree = "<group>"; };
 		FA5D07F12810636F00ED9CA4 /* types.def */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = types.def; sourceTree = "<group>"; };
@@ -82,6 +83,7 @@
 				FA5D07F02810636F00ED9CA4 /* run-test.c */,
 				FA5D07EF2810636F00ED9CA4 /* strings.h */,
 				FA5D07F12810636F00ED9CA4 /* types.def */,
+				ED7091602C84405B0056D465 /* modifiers.def */,
 				FAF1B15A280F2A8500ABBA15 /* Products */,
 				FA8450CF2811C647007162A3 /* Frameworks */,
 			);

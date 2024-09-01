@@ -1,7 +1,7 @@
 /*
- * Test runner for Objective-C encoding parser library
+ * Objective-C encoding parser library
  *
- * Copyright (c) 2022 Cyandev.
+ * Copyright (c) 2024 Cyandev.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,33 +22,18 @@
  * SOFTWARE.
  */
 
-#include <stdio.h>
-#include <stdlib.h>
+#ifndef __OBJC_MODIFIER
+#define __OBJC_MODIFIER(name, value, rep)
+#endif
 
-#include "parser.h"
-
-static void run_test(const char *test) {
-    ocep_type_node_t root = ocep_parse_encoding(test);
-    char *dump_str = ocep_type_node_dump(root);
-    printf("--- %s ---\n%s\n\n", test, dump_str);
-    free(dump_str);
-    ocep_type_node_free(root);
-}
-
-int main(int argc, char **argv) {
-    if (argc > 1) {
-        // Run with the given input.
-        run_test(argv[1]);
-        return 0;
-    }
-    
-    // Run with a suite of tests.
-    run_test("@@:");
-    run_test("v@:");
-    run_test("v@:{CGRect={CGPoint=dd}{CGSize=dd}}");
-    run_test("{B={A=[5c]}i^v}");
-    run_test("{?=c^vc");  // invalid encoding string on purpose
-    run_test("{basic_string<char, std::char_traits<char>, std::allocator<char>>={__compressed_pair<std::basic_string<char>::__rep, std::allocator<char>>={__rep=(?={__long=*QQ}{__short=[23c]{?=C}}{__raw=[3Q]})}}}");
-    run_test("v32@0:8Ar^^{CGRect}16^q24");
-    return 0;
-}
+//              name                       val        rep
+__OBJC_MODIFIER(OBJC_MODIFIER_COMPLEX,     (1 << 0),  'j')
+__OBJC_MODIFIER(OBJC_MODIFIER_ATOMIC,      (1 << 2),  'A')
+__OBJC_MODIFIER(OBJC_MODIFIER_CONST,       (1 << 3),  'r')
+__OBJC_MODIFIER(OBJC_MODIFIER_IN,          (1 << 4),  'n')
+__OBJC_MODIFIER(OBJC_MODIFIER_INOUT,       (1 << 5),  'N')
+__OBJC_MODIFIER(OBJC_MODIFIER_OUT,         (1 << 6),  'o')
+__OBJC_MODIFIER(OBJC_MODIFIER_BYCOPY,      (1 << 7),  'O')
+__OBJC_MODIFIER(OBJC_MODIFIER_BYREF,       (1 << 8),  'R')
+__OBJC_MODIFIER(OBJC_MODIFIER_ONEWAY,      (1 << 9),  'V')
+__OBJC_MODIFIER(OBJC_MODIFIER_GNUREGISTER, (1 << 10), '+')
