@@ -37,12 +37,22 @@ enum {
 #undef __OBJC_TYPE
 };
 
+enum {
+#define __OBJC_MODIFIER(name, value, _0) name = value,
+#include "modifiers.def"
+#undef __OBJC_MODIFIER
+};
+
 typedef struct ocep_type_node *ocep_type_node_t;
 
 struct ocep_type_node {
     /* Objective-C Type, see `types.def` for enum values.
        Return 0 for root nodes. */
     int type;
+    
+    /* Objective-C type modifiers, see `modifiers.def` for
+       enum values. */
+    int modifiers;
     
     /* Number of child types (for array, struct and union types).
        Note that there will only be one node in the child list

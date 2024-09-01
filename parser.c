@@ -30,9 +30,10 @@
 #include "strings.h"
 #include "common.h"
 
-static ocep_type_node_t ocep_type_node_new() {
+static ocep_type_node_t ocep_type_node_new(void) {
     ocep_type_node_t node = (ocep_type_node_t) malloc(sizeof(struct ocep_type_node));
     node->type = OBJC_TYPE_UNKNOWN;
+    node->modifiers = 0;
     node->child_num = 0;
     node->size = 0;
     node->alignment = 0;
@@ -74,22 +75,26 @@ static void _parse_struct_or_union(int type, ocep_cursor_t cursor, ocep_type_nod
     // Structs are represented as "{name=??}", the cursor has moved pass '{'
     // when this function is called.
     
-    // Collect struct name.
-    strbuf name_buf = strbuf_alloc("", 8);
-    while (!ocep_cursor_is_eof(cursor)) {
-        char tok_str[2] = { 0, 0 };
-        tok_str[0] = ocep_cursor_step(cursor);
-        if (tok_str[0] == '=') {
-            break;
-        }
-        strbuf_append(&name_buf, tok_str);
-    }
-    
     char close_tok;
     if (type == OBJC_TYPE_STRUCT) {
         close_tok = '}';
     } else {
         close_tok = ')';
+    }
+    
+    // Collect struct name.
+    strbuf name_buf = strbuf_alloc("", 8);
+    while (!ocep_cursor_is_eof(cursor)) {
+        char tok_str[2] = { 0, 0 };
+        tok_str[0] = ocep_cursor_peek(cursor);
+        if (tok_str[0] == close_tok) {
+            break;
+        }
+        ocep_cursor_step(cursor);
+        if (tok_str[0] == '=') {
+            break;
+        }
+        strbuf_append(&name_buf, tok_str);
     }
     
     // Parse child nodes.
@@ -155,6 +160,27 @@ static void _parse_pointer(ocep_cursor_t cursor, ocep_type_node_t node) {
 static ocep_type_node_t _parse_one_element(ocep_cursor_t cursor, ocep_type_node_t parent) {
     ocep_type_node_t node = ocep_type_node_new();
     node->parent = parent;
+    
+    while (1) {
+        int not_modifier = 0;
+        char tok = ocep_cursor_peek(cursor);
+        switch (tok) {
+#define __OBJC_MODIFIER(_0, val, rep)   \
+            case rep:                   \
+                node->modifiers |= val; \
+                break;
+#include "modifiers.def"
+#undef __OBJC_MODIFIER
+            default:
+                not_modifier = 1;
+                break;
+        }
+        if (not_modifier) {
+            break;
+        } else {
+            ocep_cursor_step(cursor);
+        }
+    }
     
     char tok = ocep_cursor_step(cursor);
     switch (tok) {
@@ -299,6 +325,13 @@ static NO_INLINE void ocep_type_node_dump_outlined_2(strbuf *str_buf,
     strbuf_append(str_buf, "\n");
 }
 
+static NO_INLINE void ocep_type_node_dump_outlined_3(strbuf *str_buf, const char *modifier) {
+    if (str_buf->str[str_buf->len - 1] != ' ') {
+        strbuf_append(str_buf, ", ");
+    }
+    strbuf_append(str_buf, modifier);
+}
+
 static void ocep_type_node_dump_visitor(ocep_type_node_t node, int num, int depth, void *userdata) {
     if (node->type == 0) {
         return;
@@ -327,6 +360,18 @@ static void ocep_type_node_dump_visitor(ocep_type_node_t node, int num, int dept
 #undef __OBJC_TYPE
     }
     
+    if (node->modifiers) {
+        strbuf_append_repeat(str_buf, ' ', depth * 4);
+        strbuf_append(str_buf, "modifiers: ");
+#define __OBJC_MODIFIER(name, val, _0) \
+        if (node->modifiers & val) { \
+            ocep_type_node_dump_outlined_3(str_buf, #name); \
+        }
+#include "modifiers.def"
+#undef __OBJC_MODIFIER
+        strbuf_append(str_buf, "\n");
+    }
+    
     ocep_type_node_dump_outlined_2(str_buf, depth, "size:      ", node->size);
     ocep_type_node_dump_outlined_2(str_buf, depth, "alignment: ", node->alignment);
     if (node->child_num > 1) {
@@ -336,7 +381,7 @@ static void ocep_type_node_dump_visitor(ocep_type_node_t node, int num, int dept
     const char *name = node->name;
     if (name) {
         strbuf_append_repeat(str_buf, ' ', depth * 4);
-        strbuf_append(str_buf, "name:     ");
+        strbuf_append(str_buf, "name:      ");
         strbuf_append(str_buf, name);
         strbuf_append(str_buf, "\n");
     }
